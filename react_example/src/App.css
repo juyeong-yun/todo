@@ -21,7 +21,6 @@ button {background-color: #FFFFFF; border: none;}
 .advice {margin-top: 3%; text-align: center;}
 .advice span {color: rgba(10, 10, 10, 0.6); padding: 5px;}
 .advice span:first-child {display: block;}
-.advice span:nth-child(2){margin-top: 5px;}
 
 .list {display: flex; margin: 4% 2%; justify-content: center;}
 .list h3 {
@@ -35,12 +34,27 @@ button {background-color: #FFFFFF; border: none;}
 .list .clear h3 {border: 1px solid #4bd269; background-color: #4bd269;}
 
 .todo {width: 32%; float: left; padding: 5px;}
-.clear {width: 32%; float: right; padding: 5px; margin-left: 13px;}
+.clear {width: 32%; float: right; padding: 5px;}
 
 .list li {padding: 6px; margin-bottom: 10px;}
 .list li span {font-size: 20px;}
 
-.todo li input[type="checkbox"]{margin: 0 10px 0 0;}
-.todo button {margin-left: 15px; font-size: 15px; cursor: pointer;}
+.todo li input[type="checkbox"], .clear li input[type="checkbox"] {margin: 0 10px 0 0;}
+.todo button {float: right; font-size: 15px; cursor: pointer;}
+.clear li {color: rgb(136, 136, 136);}
 
-.clear li {list-style: square;}
+@media (max-width:480px) {
+  .head .title h2 {letter-spacing: 15px; font-size: 25px;}
+  .head .title img {width: 7%;}
+  .head p {font-size: 15px;} 
+
+  .write input {width: 300px;}
+  .write input::placeholder {font-size: 15px;}
+
+  .advice {margin-top: 5%;}
+
+  .list {display: block;}
+
+  .todo {width: 100%; margin-bottom: 20%;}
+  .clear {width: 100%;}
+}
