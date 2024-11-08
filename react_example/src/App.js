@@ -6,7 +6,7 @@ import './reset.css'
 import checkmark from './images/checkmark.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faL, faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
+import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import { kadvice } from 'kadvice';
 
 function App() {
