@@ -112,6 +112,7 @@ function App() {
           <ul>
             {clears.map((clear, index) => (
                 <li key={index}>
+                  <input type='checkbox' defaultChecked='true' disabled />
                   <span>{clear}</span>
                 </li>
             ))}
