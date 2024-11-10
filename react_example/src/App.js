@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {getOneAdvice} from './utils/getAdvice.js'
 
 import './App.css'
 import './reset.css'
@@ -7,7 +8,6 @@ import checkmark from './images/checkmark.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
-import { kadvice } from 'kadvice';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -16,19 +16,15 @@ function App() {
   const [clears, setClears] = useState([]);
   const [advice, setAdvice] = useState('');
 
-  const getAdvice = async() => {
-    try{
-      const response = await kadvice.getOne();
-      setAdvice(response);
-      // console.log(response);
-    } catch(error) {
-      console.error("Error fetching advice:", error);
-    }
-  };
 
   useEffect(() => {
-    getAdvice();
 
+    const fetchAdvice = async ()=>{
+      const advice = await getOneAdvice();
+      setAdvice(advice);
+    } 
+    fetchAdvice();
+    
     // todos 목록이 변경될 때마다 체크 상태 초기화
     setCheckedItems(Array(todos.length).fill(false));
     /**
