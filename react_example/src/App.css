@@ -43,6 +43,7 @@ button {background-color: #FFFFFF; border: none;}
 .todo button {float: right; font-size: 15px; cursor: pointer;}
 .clear li {color: rgb(136, 136, 136);}
 
+/* 미디어 쿼리 */
 @media (max-width:480px) {
   .head .title h2 {letter-spacing: 15px; font-size: 25px;}
   .head .title img {width: 7%;}
@@ -54,6 +55,12 @@ button {background-color: #FFFFFF; border: none;}
   .advice {margin-top: 5%;}
 
   .list {display: block;}
+}
+
+@media (max-width:767px) {
+  .write input {width: 400px;}
+
+  .list h3 {font-size: 17px;}
 
   .todo {width: 100%; margin-bottom: 20%;}
   .clear {width: 100%;}
