@@ -12,7 +12,8 @@ button {background-color: #FFFFFF; border: none;}
 .head p {font-size: 20px; padding: 7px; margin-top: 10px;}
 
 .write { justify-self: center; margin-top: 50px;}
-.write input {outline: none; border: none; border-bottom: 1.5px solid #ff6f6f; width: 600px; height: 25px; background-color: #FFFFFF;}
+.write input {outline: none; border: none; border-bottom: 1.5px solid #ff6f6f; 
+  width: 600px; height: 25px; background-color: #FFFFFF;}
 .write button {margin-left: 15px; font-size: 19px;}
 
 .write input::placeholder {font-size: 18px; text-align: center;}
