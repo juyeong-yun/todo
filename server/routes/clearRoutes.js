@@ -11,12 +11,11 @@ const router = express.Router();
  * */
 router.put('/toClear/:id', async(req, res) => {
     const {id} = req.params;
-    
-    console.log(id);
+    // console.log(id);
     try{
         // MySQL에서 해당 id를 가진 할 일을 완료 상태로 업데이트
         await pool.query('UPDATE todolist SET clear = 1 WHERE id = ?', [id]);
-        
+
         res.json({ message: 'Todo marked as cleared' });
     }catch(error){
         console.error('Error updating clear status: ', error);
