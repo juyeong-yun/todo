@@ -27,15 +27,30 @@ export const addTodo = async(newToDo, date)=> {
 };
 
 export const updateClear = async(id)=> {
-    console.log('dbService: ', id);
+    // console.log('dbService: ', id);
     const res = await fetch(`http://localhost:4000/api/clear/toClear/${id}`, {
         method : 'PUT',
         headers : {'Content-Type': 'application/json'},
     });
-
+    
     if (!res.ok){
         throw new Error('Failed to change todo clear');
     }
+    
+    return res.json();
+};
 
+export const deleteOne = async(id) =>{
+    console.log('dbService: ', id);
+    
+    const res = await fetch(`http://localhost:4000/api/todos/deleteOne/${id}`, {
+        method : 'DELETE',
+        headers : {'Content-Type': 'application/json'},
+    });
+    
+    if (!res.ok){
+        throw new Error('Failed to delete todo');
+    }
+    
     return res.json();
 };
