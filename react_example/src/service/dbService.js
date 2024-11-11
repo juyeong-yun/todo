@@ -5,7 +5,6 @@ export const getTodos = async() => {
         method:'GET',
         headers: {'Content-Type': 'application/json'},
     });
-
     return res.json();
 };
 
@@ -22,7 +21,6 @@ export const addTodo = async(newToDo, date)=> {
     if (!res.ok){
         throw new Error('Failed to fetch todo data');
     }
-
     return res.json();
 };
 
@@ -36,13 +34,11 @@ export const updateClear = async(id)=> {
     if (!res.ok){
         throw new Error('Failed to change todo clear');
     }
-    
     return res.json();
 };
 
 export const deleteOne = async(id) =>{
-    console.log('dbService: ', id);
-    
+    // console.log('dbService: ', id);
     const res = await fetch(`http://localhost:4000/api/todos/deleteOne/${id}`, {
         method : 'DELETE',
         headers : {'Content-Type': 'application/json'},
@@ -51,6 +47,5 @@ export const deleteOne = async(id) =>{
     if (!res.ok){
         throw new Error('Failed to delete todo');
     }
-    
     return res.json();
 };
