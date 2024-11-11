@@ -6,7 +6,7 @@ const router = express.Router();
 // todo 조회
 router.get('/getList', async(req, res) => {
     try{
-        const [rows] = await pool.query('SELECT * FROM todolist');
+        const [rows] = await pool.query('SELECT * FROM todolist WHERE clear = 0');
         console.log(rows);
         res.json(rows);
     } catch(error) {
