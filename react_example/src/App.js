@@ -35,8 +35,13 @@ function App() {
 
     const fetchTodos = async () => {
       try{
-        const todos = await getTodos();
+        const todosAll = await getTodos();
+        
+        const todos = todosAll.filter(todo => todo.clear === 0);
+        const clear = todosAll.filter(todo => todo.clear === 1);
+        
         setTodos(todos);
+        setClears(clear);
       } catch (error){
         console.error('Error fetching todos: ', error);
       }
