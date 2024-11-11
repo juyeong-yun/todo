@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {getOneAdvice} from './utils/getAdvice.js'
 import { getTodos, addTodo, updateClear, deleteOne} from './service/dbService.js';
+
 import Advice from './components/advice.js';
+import TodoInput from './components/todoInput.js';
 
 import './App.css';
 import './reset.css';
@@ -9,7 +11,7 @@ import './reset.css';
 import checkmark from './images/checkmark.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
+import {faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -130,13 +132,9 @@ function App() {
         </div>
         <p>오늘 당신의 해야만 하는 일은 무엇인가요?</p>
       </div>
-
+      
       <div className='write'>
-        <form onSubmit = {(e) => { e.preventDefault(); addNewToDo();}} >
-          <input type='text' value={newToDo || ''} onChange={(e) => setNewToDo(e.target.value)} 
-          placeholder='해야만 하는 일을 적어주세요!' /> 
-          <button type='submit'><FontAwesomeIcon icon={faPaperPlane} /></button>
-        </form>
+        <TodoInput addNewToDo={addNewToDo} setNewToDo={setNewToDo} newToDo={newToDo} />
       </div>
 
       <Advice advice={advice} />
