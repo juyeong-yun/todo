@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {getOneAdvice} from './utils/getAdvice.js'
 import { getTodos, addTodo, updateClear, deleteOne} from './service/dbService.js';
+import Advice from './components/advice.js';
 
 import './App.css';
 import './reset.css';
@@ -137,11 +138,8 @@ function App() {
           <button type='submit'><FontAwesomeIcon icon={faPaperPlane} /></button>
         </form>
       </div>
-      
-      {/* 한국어 명언 api 를 사용하여 새로고침마다 명언을 새로 불러옴 */}
-      <div className='advice'>
-        {advice && <span>{advice.message}</span>}
-      </div>
+
+      <Advice advice={advice} />
       
       <div className='list'>
         <div className='todo'>
