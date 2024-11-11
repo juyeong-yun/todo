@@ -4,14 +4,12 @@ import { getTodos, addTodo, updateClear, deleteOne} from './service/dbService.js
 
 import Advice from './components/advice.js';
 import TodoInput from './components/todoInput.js';
+import TodoList from './components/todoList.js';
 
 import './App.css';
 import './reset.css';
 
 import checkmark from './images/checkmark.png';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -72,10 +70,8 @@ function App() {
         const date = new Date().toLocaleDateString(); 
         const newTodoRes = await addTodo(newToDo,date);
         if (newTodoRes){
-          const newItem = {
-            todo : newToDo, date : date,
-          };
-          console.log(newItem);
+          const newItem = {todo : newToDo, date : date,};
+          // console.log(newItem);
           // 앞에 배열에 전부 들어갈 수 있도록 처리
           setTodos([...todos, newItem]);
           setNewToDo("");
@@ -94,7 +90,7 @@ function App() {
         setTodos(todos.filter(todo => todo.id !== id));
       }
     }catch (error){
-
+      console.error('Failed to delete todo: ', error);
     }
   };
 
@@ -133,42 +129,15 @@ function App() {
         <p>오늘 당신의 해야만 하는 일은 무엇인가요?</p>
       </div>
       
+      {/*  JSX 요소는 반드시 하나의 부모 요소로 감싸져야 하기 때문에 div 태그가 남은것 */}
       <div className='write'>
         <TodoInput addNewToDo={addNewToDo} setNewToDo={setNewToDo} newToDo={newToDo} />
       </div>
-
+      
       <Advice advice={advice} />
       
-      <div className='list'>
-        <div className='todo'>
-        <h3>List</h3>
-          <ul>
-            {/* todos가 배열임을 보장해야한다. */}
-            {Array.isArray(todos) && todos.length > 0 && (
-              todos.map((todo, index) => (
-                <li key={index}>
-                  {/* checked : 해당 항목의 체크 상태 */}
-                  <input type='checkbox' checked={checkedItems[index]}  onClick={() => handleCheckboxChange(todo.id)} />
-                  <span>{todo.todo}</span>
-                  <button type='submit' onClick={() => deleteToDo(todo.id)}>
-                    <FontAwesomeIcon icon={faTrashCan} />
-                  </button>
-                </li>
-              )))}
-          </ul>
-        </div>
-        <div className='clear'>
-          <h3>Clear</h3>
-          <ul>
-            {clears.map((clear, index) => (
-                <li key={index}>
-                  <input type='checkbox' defaultChecked='true' disabled />
-                  <span>{clear.todo}</span>
-                </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <TodoList todos={todos} clears={clears} checkedItems={checkedItems} 
+      handleCheckBoxChange={handleCheckboxChange} deleteToDo={deleteToDo} />
       
     </div>
   );
