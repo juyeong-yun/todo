@@ -45,7 +45,6 @@ button {background-color: #FFFFFF; border: none;}
 
 /* 미디어 쿼리 */
 @media (max-width:480px) {
-  .head .title h2 {letter-spacing: 15px; font-size: 25px;}
   .head .title img {width: 7%;}
   .head p {font-size: 15px;} 
 
@@ -58,10 +57,14 @@ button {background-color: #FFFFFF; border: none;}
 }
 
 @media (max-width:767px) {
+  .head .title h2 {letter-spacing: 15px; font-size: 25px;}
+
   .write input {width: 400px;}
 
   .list h3 {font-size: 17px;}
 
   .todo {width: 100%; margin-bottom: 20%;}
   .clear {width: 100%;}
+
+  .list li span {font-size: 17px;}
 }
