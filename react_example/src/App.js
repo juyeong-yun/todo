@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {getOneAdvice} from './utils/getAdvice.js'
-import { getTodos, addTodo, updateClear} from './service/dbService.js';
+import { getTodos, addTodo, updateClear, deleteOne} from './service/dbService.js';
 
 import './App.css';
 import './reset.css';
@@ -78,12 +78,20 @@ function App() {
     }
   };
 
-  const deleteToDo = (index) => {
-    setTodos(todos.filter((_, i) => i !== index));
+  const deleteToDo = async(id) => {
+    try{
+      const item = todos.find(todo => todo.id === id);
+      if(item){
+        await deleteOne(id);
+        setTodos(todos.filter(todo => todo.id !== id));
+      }
+    }catch (error){
+
+    }
   };
 
   const moveClear = async(id) => {
-    console.log(id);
+    // console.log(id);
     try{
       const item = todos.find(todo => todo.id === id);
       if(item){
@@ -141,7 +149,7 @@ function App() {
                   {/* checked : 해당 항목의 체크 상태 */}
                   <input type='checkbox' checked={checkedItems[index]}  onClick={() => handleCheckboxChange(todo.id)} />
                   <span>{todo.todo}</span>
-                  <button type='submit' onClick={() => deleteToDo(index)}>
+                  <button type='submit' onClick={() => deleteToDo(todo.id)}>
                     <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                 </li>
