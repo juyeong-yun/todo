@@ -1,3 +1,5 @@
+// ./routes/todoRoutes.js
+
 import express from 'express';
 import pool from '../db.js';
 
@@ -7,7 +9,7 @@ const router = express.Router();
 router.get('/getList', async(req, res) => {
     try{
         const [rows] = await pool.query('SELECT * FROM todolist WHERE clear = 0');
-        console.log(rows);
+        // console.log(rows);
         res.json(rows);
     } catch(error) {
         console.error('Error fetching Data: ', error);
@@ -31,6 +33,5 @@ router.post('/add', async(req, res) => {
         res.status(500).json({message: 'Failed to add todo'});
     }
 });
-
 
 export default router;
