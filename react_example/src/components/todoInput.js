@@ -15,7 +15,7 @@ const TodoInput = ({addNewToDo, newToDo, setNewToDo}) =>{
 
     return(
         <form onSubmit = {hadelSubmit} >
-            <input type='text' 
+            <input type='text' maxLength='20'
                 value={newToDo || ''} 
                 onChange={handleChange} 
                 placeholder='해야만 하는 일을 적어주세요!' /> 
