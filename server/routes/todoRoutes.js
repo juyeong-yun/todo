@@ -35,9 +35,9 @@ router.post('/add', async(req, res) => {
 });
 
 router.delete('/deleteOne/:id', async(req, res) => {
-    const id = req.params;
-    // console.log(id);
-    
+    const id = req.params.id;
+    console.log(id);
+
     try {
         await pool.query('DELETE FROM todolist WHERE id = ?',[id]);
         res.json({message : 'Todo deleted successfully'});
