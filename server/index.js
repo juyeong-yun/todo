@@ -2,54 +2,22 @@ import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-import mysql from 'mysql2';
+import todoRoutes from './routes/todoRoutes.js'
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 
-app.set(port || 4000);
+// 미들웨어
+app.use(cors());
+app.use(express.json());
 
-// DB연결
-const connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : process.env.MYSQL_PW,
-    database : 'todolist',
-});
-
-const connectToDB = () => {
-    return new Promise((resolve, reject) =>{
-        connection.connect ((err) => {
-            if(err){
-                reject('Failed to connect to MySQL: ' + err);
-            } else {
-                resolve('Successfully connected to MySQL');
-            }
-        });
-    });
-};
-
-const fetchData = async() => {
-    try{
-        const message = await connectToDB();
-        console.log(message);
-
-        const [rows, feilds] = await connection.promise().query('SELECT * FROM todolist');
-        console.log(rows);
-
-    } catch(err) {
-        console.error('Error:', err);
-    } finally{
-        connection.end(); //연결종료
-    }
-};
-
-fetchData();
+// 라우터
+app.use('/todos', todoRoutes);
 
 app.get('/', (req,res) => {
-    res.send('Welcome to server!');
+    res.send('Welcome to the server!');
 });
 
 app.listen(port, () => {
