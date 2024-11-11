@@ -12,12 +12,11 @@ import './reset.css';
 import checkmark from './images/checkmark.png';
 
 function App() {
+  const [checkedItems, setCheckedItems] = useState([]);
   const [todos, setTodos] = useState([]);
   const [newToDo, setNewToDo] = useState('');
-  const [checkedItems, setCheckedItems] = useState([]);
   const [clears, setClears] = useState([]);
   const [advice, setAdvice] = useState('');
-
 
   useEffect(() => {
     // 새로고침마다 랜덤 하나의 조언 가져오기
@@ -27,13 +26,6 @@ function App() {
     } 
     fetchAdvice();
 
-    // todos 목록이 변경될 때마다 체크 상태 초기화
-    setCheckedItems(Array(todos.length).fill(false));
-    /**
-     * Array(todos.length) : todos 의 길이만큼 새 배열을 생성
-     * .fill(false) : 배열의 모든 요소를 false 로 채워 체크박스의 상태를 false 로 만드는 것
-     */
-
     const fetchTodos = async () => {
       try{
         const todosAll = await getTodos();
@@ -41,21 +33,22 @@ function App() {
         const todos = todosAll.filter(todo => todo.clear === 0);
         const clear = todosAll.filter(todo => todo.clear === 1);
         
-        setTodos(todos);
+        setTodos(todos); 
         setClears(clear);
       } catch (error){
         console.error('Error fetching todos: ', error);
       }
     };
     fetchTodos();
-
-  }, [todos.length]);
-
+  }, []);
+  
+  // todos 배열의 길이가 변경될 때마다 체크 상태를 초기화
   useEffect(()=> {
-    if (todos.length > 0) {
-      // 체크박스 상태 초기화
-      setCheckedItems(Array(todos.length).fill(false)); // 체크박스 상태 초기화
-    }
+    setCheckedItems(Array(todos.length).fill(false)); 
+    /**
+     * Array(todos.length) : todos 의 길이만큼 새 배열을 생성
+     * .fill(false) : 배열의 모든 요소를 false 로 채워 체크박스의 상태를 false 로 만드는 것
+     */
   },[todos]);
   
   const addNewToDo = async() => {
@@ -87,7 +80,11 @@ function App() {
       const item = todos.find(todo => todo.id === id);
       if(item){
         await deleteOne(id);
-        setTodos(todos.filter(todo => todo.id !== id));
+        // 삭제가 성공적으로 이루어졌으면 상태 업데이트
+        const updatedTodos = todos.filter(todo => todo.id !== id);
+        console.log('Updated todos:', updatedTodos);
+        
+        setTodos(updatedTodos);
       }
     }catch (error){
       console.error('Failed to delete todo: ', error);
@@ -136,8 +133,11 @@ function App() {
       
       <Advice advice={advice} />
       
-      <TodoList todos={todos} clears={clears} checkedItems={checkedItems} 
-      handleCheckBoxChange={handleCheckboxChange} deleteToDo={deleteToDo} />
+      <TodoList todos={todos} 
+      clears={clears} 
+      checkedItems={checkedItems} 
+      handleCheckBoxChange={handleCheckboxChange} 
+      deleteToDo={deleteToDo} />
       
     </div>
   );
