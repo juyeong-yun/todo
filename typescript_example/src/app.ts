@@ -1,32 +1,45 @@
-enum GenderType {
-    Male = 'male',
-    Female = 'female'
-}
+let value : any = 5;
+value = 'hello';
+value = 'true';
 
-interface Student {
-    readonly id : number,
-    name? : string,
-    gender : 'male' | 'female',
-    addComment? : (comment: string) => string
-}
+/*************** */
 
-function getStudentInfo(id:number):Student{
-    return{
-        id : 30,
-        name : 'Kim Cheolsu',
-        gender : 'male'
+let price: number | string = 5;
+price = 'free';
+// price = true;
+
+/*************** */
+type StrOrNum = number | string;
+
+let total: number;
+let orderId : StrOrNum;
+
+const calculate = (price:StrOrNum, qty: number):void =>{
+
+};
+
+const findOrderId = (customer:{costomerId: StrOrNum, name:string}, prodId:StrOrNum): StrOrNum =>{
+    return orderId;
+};
+
+/*************** */
+let itemPrice: number;
+
+const setItemPrice = (price:StrOrNum):void =>{
+    if(typeof price === 'string'){
+        itemPrice = 0;
+    } else{
+        itemPrice = price;
     }
-}
+};
 
-function saveStudentInfo(student:Student):void{
-    // student.id = 50; //error : cannot assign to 'id' because it is a read-only property
-    student.gender = 'male';
-}
+setItemPrice(50);
 
-let student1 = {
-    id: 40,
-    name : 'Jeon Wuchi',
-    gender : 'male'
-}
+/*************** */
+function sendGreeting(msg = 'Hello', name = 'there'):void{
+    console.log(`${msg}, ${name}`);
+};
 
-// saveStudentInfo(student1);
+sendGreeting();
+sendGreeting('Good');
+sendGreeting('Good', 'Mark');
