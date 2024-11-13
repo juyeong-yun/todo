@@ -1,45 +1,26 @@
-let value : any = 5;
-value = 'hello';
-value = 'true';
-
-/*************** */
-
-let price: number | string = 5;
-price = 'free';
-// price = true;
-
-/*************** */
-type StrOrNum = number | string;
-
-let total: number;
-let orderId : StrOrNum;
-
-const calculate = (price:StrOrNum, qty: number):void =>{
-
-};
-
-const findOrderId = (customer:{costomerId: StrOrNum, name:string}, prodId:StrOrNum): StrOrNum =>{
-    return orderId;
-};
-
-/*************** */
-let itemPrice: number;
-
-const setItemPrice = (price:StrOrNum):void =>{
-    if(typeof price === 'string'){
-        itemPrice = 0;
-    } else{
-        itemPrice = price;
+class Employee{
+    constructor(
+        private _fullName:string, 
+        private _age:number, 
+        public job:string){
     }
-};
 
-setItemPrice(50);
+    get fullName(){
+        return this._fullName;
+    }
 
-/*************** */
-function sendGreeting(msg = 'Hello', name = 'there'):void{
-    console.log(`${msg}, ${name}`);
-};
+    set fullName(value:string){
+        this._fullName = value;
+    }
 
-sendGreeting();
-sendGreeting('Good');
-sendGreeting('Good', 'Mark');
+    employeeInfo = ():void => {
+        console.log(`${this._fullName}의 직업은 ${this.job} 입니다.`)
+    }
+}
+
+
+let employee1 = new Employee('민수', 28, '개발자');
+// employee1.fullName='영희';
+employee1.fullName = '철수';
+console.log(employee1.fullName);
+employee1.employeeInfo();
