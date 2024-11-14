@@ -7,11 +7,11 @@
  */
 
 export interface Todo {
-    id : number;
+    id? : number;
     todo : string;
-    date : string;
+    date : Date;
     // 자바스크립트에서는 Date 객체로 정의되지만, 타입스크립트에서는 보통 문자열로 처리한다.
-    clear : Boolean;
+    clear? : Boolean;
 }
 
 //  이미지
