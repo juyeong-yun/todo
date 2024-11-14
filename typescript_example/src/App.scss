@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {font-family: "Lato", sans-serif;}
+button {background-color: #FFFFFF; border: none;}
+
+.content { margin: 15px 30px;}
+
+.head {
+    text-align: center; 
+    margin-top: 35px;
+
+    .title {
+        display: inline-flex; 
+        align-items: center; 
+        justify-content: center;
+
+        img {
+            width: 5%; 
+            margin-right: 10px;
+        }
+
+        h2 {
+            font-weight: 900; 
+            font-size: 30px; 
+            padding: 7px; 
+            letter-spacing: 30px; 
+            text-transform: uppercase;
+        }
+    }
+
+    p {
+        font-size: 20px; 
+        padding: 7px; 
+        margin-top: 10px;
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width:480px) {
+      .title img {width: 7%;}
+      p {font-size: 15px;} 
+    }
+
+    @media (max-width:767px) {
+      .title h2 {
+        letter-spacing: 15px; 
+        font-size: 25px;
+      }
+    }
+}
+
+.write { 
+  justify-self: center; 
+  margin-top: 50px;
+
+  input {
+    outline: none; 
+    border: none; 
+    border-bottom: 1.5px solid #ff6f6f; 
+    width: 600px; 
+    height: 25px; 
+    background-color: #FFFFFF;
+  }
+
+  button {
+    margin-left: 15px; 
+    font-size: 19px;
+  }
+
+  input::placeholder {
+    font-size: 18px; 
+    text-align: center;
+  }
+  input-text {font-size: 18px;}
+
+  @media (max-width:480px) {
+    input {width: 300px;}
+    input::placeholder {font-size: 15px;}
+  }
+
+  @media (min-width: 480px) and (max-width:767px) {
+    input {width: 400px;}
+  }
+}
+
+
+.advice {
+  margin-top: 3%; 
+  text-align: center;
+
+  span {
+    color: rgba(10, 10, 10, 0.6); 
+    padding: 5px;
+  }
+
+  span:first-child {
+    display: block;
+  }
+
+  @media (max-width:480px) {
+    margin-top: 5%;
+  }
+}
+
+
+.list {
+  display: flex; 
+  margin: 4% 2%; 
+  justify-content: center;
+
+  h3 {
+    font-size: 20px; 
+    color: #FFFFFF;
+    text-transform: uppercase;
+    border-radius: 5px; 
+    width:fit-content;
+    padding: 5px; 
+    margin-bottom: 20px;
+  }
+
+  li {
+    padding: 6px; 
+    margin-bottom: 10px;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .todo {
+    width: 32%; 
+    float: left; 
+    padding: 5px;
+
+      h3{
+        border: 1px solid #ff6f6f; 
+        background-color: #ff6f6f;
+      }
+
+      li input[type="checkbox"]{
+        margin: 0 10px 0 0;
+      }
+
+      button {
+        float: right; 
+        font-size: 15px; 
+        cursor: pointer;
+      }
+  }
+
+  .clear {
+    width: 32%; 
+    float: right; 
+    padding: 5px;
+
+    h3 {
+      border: 1px solid #4bd269; 
+      background-color: #4bd269;
+    }
+
+    li {color: rgb(136, 136, 136);}
+
+    li input[type="checkbox"] {margin: 0 10px 0 0;}
+  }
+
+  @media (max-width:480px) {
+    display: block;
+  }
+
+  @media (max-width:767px) {
+    h3 {font-size: 17px;}
+    li span {font-size: 17px;}
+
+    .todo {
+      width: 100%; 
+      margin-bottom: 20%;
+    }
+
+    .clear {width: 100%;}
+  }
+
+}

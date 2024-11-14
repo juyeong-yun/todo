@@ -1,5 +1,3 @@
-
-import { get } from 'http';
 import { kadvice } from 'kadvice';
 
 export const getOneAdvice = async() => {

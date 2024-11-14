@@ -6,7 +6,7 @@ import { getOneAdvice } from './utils/getAdvice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
-import './App.css';
+import './App.scss';
 import './reset.css';
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
 
     setClears([...clears, item]);
     setTodos(todos.filter((_,i) => i !== index));
-    
+
     setCheckedItems(new Array(todos.length).fill(false));
     // fill()은 배열에서만 사용할 수 있다.
   }
