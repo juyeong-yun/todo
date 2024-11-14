@@ -9,9 +9,6 @@
 
 ---
 
-1. react_example  
-React
-
 - 화면 예시  
    <div style="display: flex; justify-content: flex-start;">
        <img width="320" alt="image" src="https://github.com/user-attachments/assets/662be38e-53b4-439a-b9b0-b38def0b6eed">
