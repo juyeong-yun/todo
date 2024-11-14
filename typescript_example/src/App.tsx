@@ -10,7 +10,7 @@ import './App.css';
 import './reset.css';
 
 function App() {
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>([]);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newToDo, setNewTodo] = useState<string>('');
   const [clears, setClears] = useState<Todo[]>([]);
@@ -46,8 +46,18 @@ function App() {
     setTodos(todos.filter((_, i) => i !== index));
   }
 
-  function handleCheckboxChange(index: number | undefined): void {
-    throw new Error('Function not implemented.');
+  function handleCheckboxChange(index: number): void {
+    moveClear(index);
+  }
+  
+  function moveClear(index:number) : void {
+    const item = todos[index];
+
+    setClears([...clears, item]);
+    setTodos(todos.filter((_,i) => i !== index));
+    
+    setCheckedItems(new Array(todos.length).fill(false));
+    // fill()은 배열에서만 사용할 수 있다.
   }
 
   return (
