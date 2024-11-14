@@ -16,30 +16,40 @@ function App() {
   const [clears, setClears] = useState<Todo[]>([]);
   const [advice, setAdvice] = useState<Advice|undefined>(undefined);
 
-  function hadleSubmit(e: FormEvent<HTMLFormElement>): void {
-    e.preventDefault();
-
-    const addNewToDo : Todo = {
-      todo : newToDo,
-      date : new Date()
-    };
-    
-    setTodos([...todos, addNewToDo]);
-    setNewTodo('');
-  }
-
-  function handleChange(e : ChangeEvent<HTMLInputElement>): void {
-    setNewTodo(e.target.value);
-  }
-
   useEffect(() => {
     const fetchAdvice = async ()=> {
       const oneAdvice = await getOneAdvice();
       setAdvice(oneAdvice);
     } 
     fetchAdvice();
-    
+
   },[]);
+  
+  function handleChange(e : ChangeEvent<HTMLInputElement>): void {
+    setNewTodo(e.target.value);
+  }
+
+  function hadleSubmit(e: FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
+    
+    if(newToDo.trim()){
+      const addNewToDo : Todo = {
+        todo : newToDo, date : new Date()
+      };
+
+      setTodos([...todos, addNewToDo]);
+      setNewTodo('');
+    }
+  }
+
+  function deleteToDo(index:number): void {
+    setTodos(todos.filter((_, i) => i !== index));
+  }
+
+  function handleCheckboxChange(index: number | undefined): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
   <div className="content">
     <div className='head'>
@@ -64,37 +74,36 @@ function App() {
     <div className='advice'>
       {advice && <span>{advice.message}</span>}
     </div>
-        {/*  
-      <div className='list'>
-        <div className='todo'>
-            <h3>List</h3>
-            <ul>
-            {Array.isArray(todos) && todos?.length > 0 && (
-                todos.map((todo, index) => (
-                <li key={index}>
-                    <input type='checkbox' checked={checkedItems[index]}  onClick={() => handleCheckboxChange(todo.id)} />
-                    <span>{todo.todo}</span>
-                    <button type='submit' onClick={() => deleteToDo(todo.id)}>
-                    <FontAwesomeIcon icon={faTrashCan} />
-                    </button>
-                </li>
-                )))}
-            </ul>
-        </div>
-        <div className='clear'>
-            <h3>Clear</h3>
-            <ul>
-            {clears.map((clear, index) => (
-                <li key={index}>
-                    <input type='checkbox' defaultChecked='true' disabled />
-                    <span>{clear.todo}</span>
-                </li>
-            ))}
-            </ul>
-        </div>
-              */}
-      </div>
 
+    <div className='list'>
+      <div className='todo'>
+          <h3>List</h3>
+          <ul>
+          {Array.isArray(todos) && todos?.length > 0 && (
+              todos.map((todo, index) => (
+              <li key={index}>
+                  <input type='checkbox' checked={checkedItems[index]}  onClick={() => handleCheckboxChange(index)} />
+                  <span>{todo.todo}</span>
+                  <button type='submit' onClick={() => deleteToDo(index)}>
+                  <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
+              </li>
+              )))}
+          </ul>
+      </div>
+      <div className='clear'>
+          <h3>Clear</h3>
+          <ul>
+          {clears.map((clear, index) => (
+              <li key={index}>
+                  <input type='checkbox' defaultChecked={true} disabled />
+                  <span>{clear.todo}</span>
+              </li>
+          ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
