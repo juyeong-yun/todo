@@ -3,4 +3,5 @@
  */
 export interface Advice {
     message : string;
+    author? : string;
 }
