@@ -89,17 +89,7 @@ function App() {
           />
           {/* props 이해를 돕기위한 예제 사용  */}
           {/* <PropsEx todo="Learn TypeScript" isCompleted={false} /> */}
-          <div className='clear'>
-            <h3>Clear</h3>
-            <ul>
-            {clears.map((clear, index) => (
-                <li key={index}>
-                    <input type='checkbox' defaultChecked={true} disabled />
-                    <span>{clear.todo}</span>
-                </li>
-            ))}
-            </ul>
-          </div>
+          <GetClearList clears={clears} />
       </div>
     </div>
   );
