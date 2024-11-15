@@ -2,13 +2,11 @@ import React, {useState, useEffect, FormEvent, ChangeEvent} from 'react';
 import { Todo } from './types/Todo';
 import { Advice } from './types/Advice';
 import { getOneAdvice } from './utils/getAdvice';
+
 import AddNewTodo from './components/AddNewTodo';
 import GetTodoList from './components/GetTodoList';
 import GetClearList from './components/GetClearList';
 // import PropsEx from './components/PropsEx';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
 import './scss/App.scss';
 import './css/reset.css';
