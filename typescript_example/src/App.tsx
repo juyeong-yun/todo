@@ -3,6 +3,8 @@ import { Todo } from './types/Todo';
 import { Advice } from './types/Advice';
 import { getOneAdvice } from './utils/getAdvice';
 
+// import PropsEx from './components/PropsEx';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
@@ -100,6 +102,8 @@ function App() {
               </li>
               )))}
           </ul>
+          {/* props 이해를 돕기위한 예제 사용  */}
+          {/* <PropsEx todo="Learn TypeScript" isCompleted={false} /> */}
       </div>
       <div className='clear'>
           <h3>Clear</h3>
