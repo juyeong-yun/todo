@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,10 +19,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-, "../src/react-app-env.d.ts"  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
