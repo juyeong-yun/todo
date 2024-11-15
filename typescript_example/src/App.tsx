@@ -4,6 +4,7 @@ import { Advice } from './types/Advice';
 import { getOneAdvice } from './utils/getAdvice';
 import AddNewTodo from './components/AddNewTodo';
 import GetTodoList from './components/GetTodoList';
+import GetClearList from './components/GetClearList';
 // import PropsEx from './components/PropsEx';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,23 +81,14 @@ function App() {
         </div>
 
         <div className='list'>
-          <div className='todo'>
-              <h3>List</h3>
-              <ul>
-              {Array.isArray(todos) && todos?.length > 0 && (
-                  todos.map((todo, index) => (
-                  <li key={index}>
-                      <input type='checkbox' checked={checkedItems[index]}  onClick={() => handleCheckboxChange(index)} />
-                      <span>{todo.todo}</span>
-                      <button type='submit' onClick={() => deleteTodo(index)}>
-                      <FontAwesomeIcon icon={faTrashCan} />
-                      </button>
-                  </li>
-                  )))}
-              </ul>
-              {/* props 이해를 돕기위한 예제 사용  */}
-              {/* <PropsEx todo="Learn TypeScript" isCompleted={false} /> */}
-          </div>
+          <GetTodoList 
+          todos={todos}
+          checkedItems= {checkedItems} 
+          handleCheckboxChange= {handleCheckboxChange} 
+          deleteTodo ={deleteTodo}
+          />
+          {/* props 이해를 돕기위한 예제 사용  */}
+          {/* <PropsEx todo="Learn TypeScript" isCompleted={false} /> */}
           <div className='clear'>
             <h3>Clear</h3>
             <ul>
