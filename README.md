@@ -11,10 +11,10 @@
 
 # 화면 예시  
    <div style="display: flex; justify-content: flex-start;">
-       <img width="320" alt="image" src="https://github.com/user-attachments/assets/662be38e-53b4-439a-b9b0-b38def0b6eed">
-       <img width="320" alt="image" src="https://github.com/user-attachments/assets/ff811016-ac56-48fc-9a33-c403a46ff9cb">
-       <img width="320" alt="image" src="https://github.com/user-attachments/assets/0b9d1f3f-617d-46a9-9a4d-6df98fb3ef0f">
+       <img width="440" alt="image" src="https://github.com/user-attachments/assets/662be38e-53b4-439a-b9b0-b38def0b6eed">
+       <img width="440" alt="image" src="https://github.com/user-attachments/assets/ff811016-ac56-48fc-9a33-c403a46ff9cb">
    </div>
+          <img width="320" alt="image" src="https://github.com/user-attachments/assets/0b9d1f3f-617d-46a9-9a4d-6df98fb3ef0f">
    
    
 
