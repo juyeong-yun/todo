@@ -6,8 +6,8 @@ import { getOneAdvice } from './utils/getAdvice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
-import './App.scss';
-import './reset.css';
+import './scss/App.scss';
+import './css/reset.css';
 
 function App() {
   const [checkedItems, setCheckedItems] = useState<boolean[]>([]);
