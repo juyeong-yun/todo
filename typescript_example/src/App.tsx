@@ -1,14 +1,12 @@
 import React, {useState, useEffect, FormEvent, ChangeEvent} from 'react';
 import { Todo } from './types/Todo';
 import { Advice } from './types/Advice';
-import { getOneAdvice } from './utils/getAdvice';
+import { getAdvice } from './utils/getAdvice';
+import GetOneAdvice  from './components/GetOneAdvice';
 import AddNewTodo from './components/AddNewTodo';
 import GetTodoList from './components/GetTodoList';
 import GetClearList from './components/GetClearList';
 // import PropsEx from './components/PropsEx';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPaperPlane, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 
 import './scss/App.scss';
 import './css/reset.css';
@@ -18,15 +16,16 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
   const [clears, setClears] = useState<Todo[]>([]);
-  const [advice, setAdvice] = useState<Advice|undefined>(undefined);
+  const [advice, setAdvice] = useState<Advice|null>(null);
 
   useEffect(() => {
-    const fetchAdvice = async ()=> {
-      const oneAdvice = await getOneAdvice();
-      setAdvice(oneAdvice);
-    } 
+    const fetchAdvice = () => {
+      const adviceData = getAdvice();
+      console.log(adviceData);
+      setAdvice(adviceData);
+    };
+    
     fetchAdvice();
-
   },[]);
   
   function handleChange(e : ChangeEvent<HTMLInputElement>): void {
@@ -40,7 +39,6 @@ function App() {
       const addNewTodo : Todo = {
         todo : newTodo, date : new Date()
       };
-
       setTodos([...todos, addNewTodo]);
       setNewTodo('');
     }
@@ -76,9 +74,7 @@ function App() {
         
         <AddNewTodo newTodo={newTodo} handleChange={handleChange} handleSubmit={handleSubmit} />
         
-        <div className='advice'>
-          {advice && <span>{advice.message}</span>}
-        </div>
+        <GetOneAdvice advice={advice} />
 
         <div className='list'>
           <GetTodoList 

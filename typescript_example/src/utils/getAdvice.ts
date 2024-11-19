@@ -1,11 +1,11 @@
 import { kadvice } from 'kadvice';
 
-export const getOneAdvice = async() => {
-    try{
-        const advice = await kadvice.getOne();
-        return advice;
-    }catch(error){
-        console.error('Failed to uploading advice: ', error);
+export const getAdvice = () => {
+    try {
+        const adviceApi = kadvice.getOne();
+        return adviceApi;
+    } catch (error) {
+        console.error('Failed to upload advice: ', error);
+        return null;
     }
-
 };
