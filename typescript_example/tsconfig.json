@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,19 +10,18 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
+    "importHelpers": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-, "../src/react-app-env.d.ts"  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
