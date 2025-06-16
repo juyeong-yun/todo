@@ -1,10 +1,14 @@
 # example_zip
 프론트엔드 사용 언어 예제  
 
-전체적인 주제 - To Do List  
-- 해야하는 일을 추가, 삭제 하는 기능을 넣음    
+To Do List  
+- 할 일 등록/삭제, 완료 리스트 이동 등 주요 기능 구현
+- 입력값 처리, 체크박스 기능, 완료 항목 분리 기능에 대해 직접 실행하며 기능 검증 경험
+- 간단한 사용자 플로우에 맞춰 기능 정상 여부를 UI 중심으로 확인하며 오류 수정 경험  
+
+## 사용한 API(한국어 번역 조언 API)
 - 한국어로 번역된 조언 API를 활용하여 랜덤 조언으로 사용자에게 응원을 해주는 용도로 사용  
-    - 사용한 API : https://github.com/chkim116/kadvice?tab=readme-ov-file
+    - 출처 : https://github.com/chkim116/kadvice?tab=readme-ov-file
 - checkbox를 클릭하면 옆에 clear 칸으로 이동하도록 설정, clear의 체크박스는 disabled로 변경 불가 상태 유지  
 
 ---
